@@ -13,7 +13,7 @@ from .decoder import PANDecoder
 
 
 class PAN(SegmentationModel):
-    """Implementation of PAN_ (Pyramid Attention Network).
+    """Implementation of `PAN`__ (Pyramid Attention Network).
 
     Note:
         Currently works with shape of input tensor >= [B x C x 128 x 128] for pytorch <= 1.1.0
@@ -43,19 +43,18 @@ class PAN(SegmentationModel):
         upsampling: Final upsampling factor. Default is 4 to preserve input-output spatial shape identity
         aux_params: Dictionary with parameters of the auxiliary output (classification head). Auxiliary output is build
             on top of encoder if **aux_params** is not **None** (default). Supported params:
-                - classes (int): A number of classes
-                - pooling (str): One of "max", "avg". Default is "avg"
-                - dropout (float): Dropout factor in [0, 1)
-                - activation (str): An activation function to apply "sigmoid"/"softmax"
-                    (could be **None** to return logits)
+
+            - classes (int): A number of classes
+            - pooling (str): One of "max", "avg". Default is "avg"
+            - dropout (float): Dropout factor in [0, 1)
+            - activation (str): An activation function to apply "sigmoid"/"softmax"
+              (could be **None** to return logits)
         kwargs: Arguments passed to the encoder class ``__init__()`` function. Applies only to ``timm`` models. Keys with ``None`` values are pruned before passing.
 
     Returns:
         ``torch.nn.Module``: **PAN**
 
-    .. _PAN:
-        https://arxiv.org/abs/1805.10180
-
+    .. __: https://arxiv.org/abs/1805.10180
     """
 
     @supports_config_loading

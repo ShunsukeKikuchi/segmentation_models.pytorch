@@ -14,7 +14,7 @@ from .decoder import UnetDecoder
 
 class Unet(SegmentationModel):
     """
-    U-Net is a fully convolutional neural network architecture designed for semantic image segmentation.
+    `U-Net`__ is a fully convolutional neural network architecture designed for semantic image segmentation.
 
     It consists of two main parts:
 
@@ -44,6 +44,7 @@ class Unet(SegmentationModel):
             Length of the list should be the same as **encoder_depth**
         decoder_use_norm:     Specifies normalization between Conv2D and activation.
             Accepts the following types:
+
             - **True**: Defaults to `"batchnorm"`.
             - **False**: No normalization (`nn.Identity`).
             - **str**: Specifies normalization type using default parameters. Available values:
@@ -69,11 +70,12 @@ class Unet(SegmentationModel):
             **callable** and **None**. Default is **None**.
         aux_params: Dictionary with parameters of the auxiliary output (classification head). Auxiliary output is build
             on top of encoder if **aux_params** is not **None** (default). Supported params:
-                - classes (int): A number of classes
-                - pooling (str): One of "max", "avg". Default is "avg"
-                - dropout (float): Dropout factor in [0, 1)
-                - activation (str): An activation function to apply "sigmoid"/"softmax"
-                    (could be **None** to return logits)
+
+            - classes (int): A number of classes
+            - pooling (str): One of "max", "avg". Default is "avg"
+            - dropout (float): Dropout factor in [0, 1)
+            - activation (str): An activation function to apply "sigmoid"/"softmax"
+              (could be **None** to return logits)
         kwargs: Arguments passed to the encoder class ``__init__()`` function. Applies only to ``timm`` models. Keys with ``None`` values are pruned before passing.
 
     Returns:
@@ -97,9 +99,7 @@ class Unet(SegmentationModel):
             print(mask.shape)
             # torch.Size([2, 5, 256, 256])
 
-    .. _Unet:
-        https://arxiv.org/abs/1505.04597
-
+    .. __: https://arxiv.org/abs/1505.04597
     """
 
     requires_divisible_input_shape = False
