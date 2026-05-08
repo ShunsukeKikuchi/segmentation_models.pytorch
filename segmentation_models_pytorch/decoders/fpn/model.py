@@ -12,7 +12,7 @@ from .decoder import FPNDecoder
 
 
 class FPN(SegmentationModel):
-    """FPN_ is a fully convolution neural network for image semantic segmentation.
+    """`FPN`__ is a fully convolution neural network for image semantic segmentation.
 
     Args:
         encoder_name: Name of the classification model that will be used as an encoder (a.k.a backbone)
@@ -40,19 +40,18 @@ class FPN(SegmentationModel):
         upsampling: Final upsampling factor. Default is 4 to preserve input-output spatial shape identity
         aux_params: Dictionary with parameters of the auxiliary output (classification head). Auxiliary output is build
             on top of encoder if **aux_params** is not **None** (default). Supported params:
-                - classes (int): A number of classes
-                - pooling (str): One of "max", "avg". Default is "avg"
-                - dropout (float): Dropout factor in [0, 1)
-                - activation (str): An activation function to apply "sigmoid"/"softmax"
-                    (could be **None** to return logits)
+
+            - classes (int): A number of classes
+            - pooling (str): One of "max", "avg". Default is "avg"
+            - dropout (float): Dropout factor in [0, 1)
+            - activation (str): An activation function to apply "sigmoid"/"softmax"
+              (could be **None** to return logits)
         kwargs: Arguments passed to the encoder class ``__init__()`` function. Applies only to ``timm`` models. Keys with ``None`` values are pruned before passing.
 
     Returns:
         ``torch.nn.Module``: **FPN**
 
-    .. _FPN:
-        http://presentations.cocodataset.org/COCO17-Stuff-FAIR.pdf
-
+    .. __: http://presentations.cocodataset.org/COCO17-Stuff-FAIR.pdf
     """
 
     @supports_config_loading
