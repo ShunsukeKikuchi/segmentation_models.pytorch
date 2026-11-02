@@ -15,7 +15,7 @@ jobs:
   style:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Python
         uses: astral-sh/setup-uv@v7
         with:
@@ -38,7 +38,7 @@ jobs:
         python-version: ["3.12", "3.13", "3.14"]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: astral-sh/setup-uv@v7
@@ -56,7 +56,7 @@ jobs:
       run: uv run pytest -v -rsx -n 2 --cov=segmentation_models_pytorch --cov-report=xml --cov-config=pyproject.toml --non-marked-only
 
     - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v6
+      uses: codecov/codecov-action@v7
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         slug: qubvel-org/segmentation_models.pytorch
@@ -64,7 +64,7 @@ jobs:
   test_logits_match:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Set up Python
       uses: astral-sh/setup-uv@v7
       with:
@@ -80,7 +80,7 @@ jobs:
   test_torch_compile:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Set up Python
       uses: astral-sh/setup-uv@v7
       with:
@@ -96,7 +96,7 @@ jobs:
   test_torch_export:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Set up Python
       uses: astral-sh/setup-uv@v7
       with:
@@ -112,7 +112,7 @@ jobs:
   test_torch_script:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Set up Python
       uses: astral-sh/setup-uv@v7
       with:
@@ -128,11 +128,11 @@ jobs:
   minimum:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Set up Python
       uses: astral-sh/setup-uv@v7
       with:
-        python-version: "3.10"
+        python-version: "3.11"
         activate-environment: true
     - name: Install dependencies
       run: uv pip install -r requirements/minimum.old -r requirements/test.txt
